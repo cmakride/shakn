@@ -184,7 +184,7 @@ const NavBar = ({ user, handleLogout }) => {
 
       ) : (
 
-        <div className="flex items-center justify-between border-b border-gray-400 py-8 bg-white shadow">
+        <div className="flex items-center justify-between border-b p-5 border-gray-400 py-8 bg-white shadow w-full">
           <nav>
             <section className="MOBILE-MENU flex lg:hidden flex-col gap-2 ml-4">
               <div lassName="HAMBURGER-ICON space-y-2" onClick={() => setIsNavOpen((prev) => !prev)}>
