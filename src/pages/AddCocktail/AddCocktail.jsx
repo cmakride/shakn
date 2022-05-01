@@ -2,9 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BsTrash } from 'react-icons/bs'
 
 function AddCocktail(props) {
+
     const formElement = useRef()
     const formElementIng = useRef()
     const [validForm, setValidForm] = useState(false)
+
+    // !alert Messages for ingredients and Name and eventually photo
+    const [alertMessageName, setAlertMessageName] = useState("")
+    const [alertMessageIngredient, setAlertMessageIngredient] = useState("")
 
     const [formData, setFormData] = useState({
         name: ""
@@ -85,10 +90,25 @@ function AddCocktail(props) {
     useEffect(() => {
 
         //!Make sure have at least 1 ingredient added and form is valid, name, garnish right now
-        if (arrayIngredients.length > 0 && formElement.current.checkValidity()) { setValidForm(true) }
+        if (arrayIngredients.length > 0 && formElement.current.checkValidity()) {
+            setAlertMessageIngredient("")
+            setAlertMessageName("")
+            setValidForm(true)
+        }
         else {
             setValidForm(false)
+            if (arrayIngredients.length < 1) {
+                setAlertMessageIngredient("Ingredients")
+            } else {
+                setAlertMessageIngredient("")
+            }
+            if (!formElement.current.checkValidity()) {
+                setAlertMessageName("Name")
+            } else {
+                setAlertMessageName("")
+            }
         }
+
     }, [formData, arrayIngredients])
 
     //!this will store photofile in formdata in state
@@ -99,8 +119,40 @@ function AddCocktail(props) {
 
     return (
         <>
-            <div className="max-w-2xl mx-auto bg-white p-16 rounded-md" >
-                <h1 className="mt-8 text-center text-3xl font-bold">New Cocktail</h1>
+            <div className="max-w-2xl mx-auto bg-white px-16 py-10 rounded-md" >
+                {validForm ?
+                    <>
+                        <div class="bg-green-100 rounded-md p-3 flex items-center">
+                            <svg
+                                class="stroke-2 stroke-current text-green-600 h-8 w-8 mr-2 flex-shrink-0"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M0 0h24v24H0z" stroke="none" />
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M9 12l2 2 4-4" />
+                            </svg>
+                            <div class="text-green-700">
+                                <div class="font-bold text-l">Your Cocktail is ready to be submitted!</div>
+                            </div>
+                        </div>
+                    </>
+                    :
+                    <>
+                        <div class="bg-red-100 rounded-md p-3 flex items-center">
+
+                            <div class="text-red-700">
+                                <div class="font-bold text-l">
+                                    Inputs required: {alertMessageName} {alertMessageIngredient}
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                }
+
+                <h1 className="py-3 text-center text-3xl font-bold">New Cocktail</h1>
                 <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
                     <div className="grid gap-6 mb-6 lg:grid-cols-1">
                         <div>
@@ -110,6 +162,7 @@ function AddCocktail(props) {
                                 name="name"
                                 onChange={handleChange}
                                 value={formData.name}
+                                required={true}
                             />
                         </div>
 
@@ -133,7 +186,6 @@ function AddCocktail(props) {
                                 name="garnish"
                                 onChange={handleChange}
                                 value={formData.garnish}
-                                required
                             />
                         </div>
 
@@ -143,7 +195,6 @@ function AddCocktail(props) {
                                 name="served_in"
                                 onChange={handleChange}
                                 value={formData.served_in}
-                                required
                             >
                                 <option></option>
                                 <option>Martini Glass</option>
@@ -165,7 +216,7 @@ function AddCocktail(props) {
                     onSubmit={handleIngredientAdd}>
                     <div className="grid gap-6 mb-6 lg:grid-cols-1">
                         <h4
-                            hidden={enoughIngredients()} className="mt-8 text text-2xl font-bold">Please Add an Ingredient</h4>
+                            hidden={enoughIngredients()} className="mt-8 text text-2xl font-bold">Ingredient Add</h4>
                         <input
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             type="text"
@@ -175,17 +226,17 @@ function AddCocktail(props) {
                         />
                         <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type='submit'
                         >
-                        Add Ingredient
+                            Add Ingredient
                         </button>
                     </div>
                 </form>
                 <h4 className="mt-8 text text-2xl font-bold">Ingredients</h4>
                 <ul className='my-2'>
                     {arrayIngredients.map((ingredient, idx) => (
-                        <li className ="flex items-center gap-3"key={idx}>
+                        <li className="flex items-center gap-3" key={idx}>
                             <h2>{ingredient}</h2>
                             <button className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2 mr-1 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button" onClick={() => handleRemoveIngredient(idx)}>
-                                <BsTrash className="text-xl"/>
+                                <BsTrash className="text-xl" />
                             </button>
                         </li>
                     ))}
@@ -197,7 +248,6 @@ function AddCocktail(props) {
                     </label>
                     <input className="mt-8 text text-2xl font-bold bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         type="file"
-                        // className="form-control"
                         id="photo-upload"
                         name="image"
                         onChange={handleChangePhoto}
