@@ -31,7 +31,7 @@ we used cloudinary for image upload functionality
 
 - Implement search functionality
 - Use an email verification API
-- deploy using netify instead heroku
+- ~~deploy using netify instead heroku~~
 - Load Comments button option in cocktail details
 - make uploading picture required
-- can see cocktail list without logged in# shakn
+- ~~can see cocktail list without being logged in~~
