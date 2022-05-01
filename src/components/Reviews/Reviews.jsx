@@ -12,7 +12,7 @@ const Reviews = ({ reviews }) => {
   useEffect(()=>{
     const average = total/reviews.length
     setNumber(average)
-  },[total])
+  },[reviews.length,total])
   
 
   return (

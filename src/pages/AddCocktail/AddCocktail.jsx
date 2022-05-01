@@ -84,7 +84,7 @@ function AddCocktail(props) {
     useEffect(() => {
 
         //!Make sure have at least 1 ingredient added and form is valid, name, garnish right now
-        if (enoughIngredients() && formElement.current.checkValidity()) { setValidForm(true) }
+        if (arrayIngredients.length > 0 && formElement.current.checkValidity()) { setValidForm(true) }
         else {
             setValidForm(false)
         }
