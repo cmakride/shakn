@@ -4,7 +4,7 @@ import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 export const MakeReview = ({ reviews, profileId, cocktailId, handleAddRating }) => {
 
   const [yourReview, setYourReview] = useState(0)
- 
+
   const myReview = reviews.find(c => c.profile === profileId)
 
   function handleRatingSubmit(evt) {
@@ -18,23 +18,26 @@ export const MakeReview = ({ reviews, profileId, cocktailId, handleAddRating }) 
       <>
         {myReview ?
           <>
-            <div style={{ display: "flex" }}>
-              {Array(5).fill().map((_, index) =>
-                <div key={index}>
-                  {myReview.rating >= index + 1 ?
-                    <AiFillStar />
-                    :
-                    <AiOutlineStar />
-                  }
-                </div>
-              )}
+            <div className='flex gap-3 items-center'>
+              <div className='flex'>
+                {Array(5).fill().map((_, index) =>
+                  <div key={index}>
+                    {myReview.rating >= index + 1 ?
+                      <AiFillStar />
+                      :
+                      <AiOutlineStar />
+                    }
+                  </div>
+                )}
+              </div>
               <h5>Your Review</h5>
 
             </div>
           </>
           :
           <>
-            <form onSubmit={handleRatingSubmit} style={{ display: "flex" }}>
+            <form onSubmit={handleRatingSubmit} className='flex gap-3 items-center'>
+            <div className='flex'>
               {Array(5).fill().map((_, index) =>
                 <div key={index}>
                   {yourReview >= index + 1 ?
@@ -44,6 +47,7 @@ export const MakeReview = ({ reviews, profileId, cocktailId, handleAddRating }) 
                   }
                 </div>
               )}
+              </div>
 
               {yourReview > 0 ?
                 <>
