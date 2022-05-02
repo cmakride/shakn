@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
 
 const SignupForm = props => {
@@ -38,66 +37,66 @@ const SignupForm = props => {
   }
 
   return (
-    <form
-      autoComplete="off"
-      onSubmit={handleSubmit}
-      className={styles.container}
-    >
-      <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
-        <input
-          type="text"
+    <div className='flex justify-center'>
+      <div className="p-10 shadow-lg rounded-xl text-center bg-white">
+      <h1 className="text-3xl font-bold mb-2 text-black-500">Sign Up</h1>
+        <form
+          className='text-left pt-3 flex flex-col items-center gap-5'
           autoComplete="off"
-          id="name"
-          value={name}
-          name="name"
-          onChange={handleChange}
-        />
+          onSubmit={handleSubmit}
+        >
+          <input
+            type="text"
+            className='p-1 rounded-lg bg-gray-100 shadow-md border-cyan-500'
+            placeholder='Name'
+            autoComplete="off"
+            id="name"
+            value={name}
+            name="name"
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            className='p-1 rounded-lg bg-gray-100 shadow-md border-cyan-500'
+            placeholder='Email'
+            autoComplete="off"
+            id="email"
+            value={email}
+            name="email"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            className='p-1 rounded-lg bg-gray-100 shadow-md border-cyan-500'
+            placeholder='Password'
+            autoComplete="off"
+            id="password"
+            value={password}
+            name="password"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            className='p-1 rounded-lg bg-gray-100 shadow-md border-cyan-500'
+            placeholder='Confirm Password'
+            autoComplete="off"
+            id="confirm"
+            value={passwordConf}
+            name="passwordConf"
+            onChange={handleChange}
+          />
+
+          <div className='mt-2 flex gap-3'>
+            <button className="bg-green-200 p-2 pr-4 pl-4 text-gray-800 font-semibold rounded-xl" disabled={isFormInvalid()}>
+              Sign Up
+            </button>
+            <Link to="/">
+              <button className="bg-red-200 p-2 pr-4 pl-4 text-gray-800 font-semibold rounded-xl">Cancel</button>
+            </Link>
+          </div>
+        </form>
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
-        <input
-          type="text"
-          autoComplete="off"
-          id="email"
-          value={email}
-          name="email"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="password"
-          value={password}
-          name="password"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="confirm"
-          value={passwordConf}
-          name="passwordConf"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
-          Sign Up
-        </button>
-        <Link to="/">
-          <button>Cancel</button>
-        </Link>
-      </div>
-    </form>
+    </div>
   )
 }
 
