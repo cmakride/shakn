@@ -243,10 +243,10 @@ function AddCocktail(props) {
                 </ul>
                 {/* Upload Photo Form */}
                 <div className="grid gap-6 mb-6 lg:grid-cols-1">
-                    <label htmlFor="photo-upload" className="mt-8 text text-2xl font-bold">
+                    <label htmlFor="photo-upload" className="mt-1 text text-2xl font-bold">
                         Upload Photo
                     </label>
-                    <input className="mt-1 text text-2xl font-bold bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    <input className="mt-1 text text-xl font-bold bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 w-full box-border "
                         type="file"
                         id="photo-upload"
                         name="image"
