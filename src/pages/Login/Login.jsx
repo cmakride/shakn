@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
-import styles from './Login.module.css'
+
 
 const LoginPage = props => {
   const [message, setMessage] = useState([''])
@@ -10,16 +10,19 @@ const LoginPage = props => {
   }
 
   return (
-    <main className={styles.container}>
+    <div className='flex justify-center'>
       
-      <h1>Log In</h1>
-      <p>{message}</p>
-      <LoginForm
-        handleSignupOrLogin={props.handleSignupOrLogin}
-        updateMessage={updateMessage}
-      />
+        <div className="p-10 shadow-lg rounded-xl text-center bg-white">
+          <h1 className="text-3xl font-bold text-black-500">Sign In</h1>
+          <h3 className="text-1xl font-semibold text-gray-500">{message}</h3>
+          <LoginForm
+            handleSignupOrLogin={props.handleSignupOrLogin}
+            updateMessage={updateMessage}
+          />
+        </div>
       
-    </main>
+    </div>
+
   )
 }
 

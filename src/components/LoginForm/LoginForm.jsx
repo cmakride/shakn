@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from './LoginForm.module.css'
 import * as authService from '../../services/authService'
 
 const LoginForm = props => {
@@ -28,36 +27,35 @@ const LoginForm = props => {
 
   return (
     <form
+      className='text-left pt-3 flex flex-col items-center gap-3'
       autoComplete="off"
       onSubmit={handleSubmit}
-      className={styles.container}
     >
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
         <input
           type="text"
+          className='p-1 rounded-lg bg-gray-100 shadow-md border-cyan-500'
+          placeholder='Email'
           autoComplete="off"
           id="email"
           value={formData.email}
           name="email"
           onChange={handleChange}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
         <input
           type="password"
+          className='p-1 rounded-lg bg-gray-100 shadow-md border-cyan-500'
+          placeholder='Password'
           autoComplete="off"
           id="password"
           value={formData.pw}
           name="pw"
           onChange={handleChange}
         />
-      </div>
-      <div>
-        <button className={styles.button}>Log In</button>
+      
+      <div className='mt-2 flex gap-3'>
+        <button className="bg-cyan-200 p-2 pr-4 pl-4 text-gray-800 font-semibold rounded-xl">Log In</button>
         <Link to="/">
-          <button>Cancel</button>
+          <button className="bg-red-200 p-2 pr-4 pl-4 text-gray-800 font-semibold rounded-xl">Cancel</button>
         </Link>
       </div>
     </form>
