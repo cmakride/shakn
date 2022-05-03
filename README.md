@@ -6,8 +6,8 @@ Welcome to Shakn! A mobile cocktail sharing app created by [Jaeyoung Choi](https
 Check out our Trello board and planning materials [here](https://trello.com/b/L6dbiTqe/cocktail-app-p3)
 
 ## How it's going 💻
-![Imgur](https://imgur.com/oBCZi2j.png)
-![Imgur](https://i.imgur.com/DBJeufn.png)
+![Imgur](https://imgur.com/e4HmCwI.png)
+![Imgur](https://imgur.com/R8qi6Sy.png)
 
 ## Technologies Used 🛠
 
