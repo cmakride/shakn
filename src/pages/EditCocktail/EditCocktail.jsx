@@ -76,7 +76,7 @@ function EditCocktail({handleUpdateCocktail}) {
                 />
 
                 <br />
-                <label className="mt-8 text text-2xl font-bold" htmlFor="method-input">Method:</label>
+                <label className="mt-8 text text-l font-medium" htmlFor="method-input">Method:</label>
                 <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="method"
                     onChange={handleChange}
                     value={formData.method}>
@@ -85,7 +85,7 @@ function EditCocktail({handleUpdateCocktail}) {
                     <option>Mixing Glass</option>
                     <option>Build in Glass</option>
                 </select> <br />
-                <label className="mt-8 text text-2xl font-bold" htmlFor="garnish-input">Garnish:</label>
+                <label className="mt-8 text text-l font-medium" htmlFor="garnish-input">Garnish:</label>
                 <input
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     type="text"
@@ -94,7 +94,7 @@ function EditCocktail({handleUpdateCocktail}) {
                     value={formData.garnish}
                     required
                 /> <br />
-                <label  className="mt-8 text text-2xl font-bold" htmlFor="servedin-input">Served in:</label>
+                <label  className="mt-8 text text-l font-medium" htmlFor="servedin-input">Served in:</label>
                 <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="served_in"
                     onChange={handleChange}
